@@ -1,3 +1,5 @@
+using ShopList.Gui.ViewModels;
+
 namespace ShopList.Gui.View;
 
 public partial class ShopListPage : ContentPage
@@ -5,6 +7,6 @@ public partial class ShopListPage : ContentPage
 	public ShopListPage()
 	{
 		InitializeComponent();
-		BindingContext = new ShopListViewModels();
+		BindingContext = new ShopListViewModel();
 	}
 }

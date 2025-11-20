@@ -23,9 +23,10 @@
                 Text="Producto"
                 VerticalOptions="Center"/>
             <Entry
-                Grid.Row="1"
-                Grid.Column="0"
+                Grid.Row="0"
+                Grid.Column="1"
                 Grid.ColumnSpan="3"
+                Text="{Binding NombreDelArticulo}"
                 BackgroundColor="#f0f0f0"/>
             <Label
                 Grid.Row="1"
@@ -35,12 +36,13 @@
             <Entry
                 Grid.Row="1"
                 Grid.Column="1"
-                
-                BackgroundColor="#f0f0f0"/>
+                BackgroundColor="#f0f0f0"
+                Text="{Binding Cantidad}"/>
             <Button
                 Grid.Row="1"
                 Grid.Column="2"
-                Text="+"/>
+                Text="+"
+                Command="{Binding AddShopListItemComma}"/>
             <Button
                 Grid.Row="1"
                 Grid.Column="3"
@@ -67,16 +69,18 @@
                             Grid.Column="0"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"
+                            IsChecked="{Binding Comprado}"
                             />
                         <Label
                             Grid.Column="1"
-                            Text="Nombre"
                             VerticalOptions="Center"
+                            Text="{Binding Nombre}"
                             />
                         <Label
                             Grid.Column="2"
-                            Text="Cantidad"
-                            VerticalOptions="Center"/>
+                            VerticalOptions="Center"
+                            Text="{Binding Cantidad}"
+                            />
 
                     </Grid>
                     

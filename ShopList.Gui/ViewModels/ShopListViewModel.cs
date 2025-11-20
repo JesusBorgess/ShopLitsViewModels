@@ -98,21 +98,12 @@ namespace ShopList.Gui.ViewModels
 
         private void OnProPertyChanged (string propertyName)
         {
-            PropertyChanged(nameof (NombreDelArticulo))
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangingEventArgs(propertyName));
         }
 
-        public int Cantidad
-        {
-            get => _cantidad;
-            set
-            {
-                if (_cantidad != value)
-                {
-                    _cantidad = value;
-                    OnProPertyChanged(nameof(Cantidad));
-                }
-            }
-        }
+    
 
     }
 }

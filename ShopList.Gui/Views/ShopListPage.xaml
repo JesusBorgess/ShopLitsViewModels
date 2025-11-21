@@ -42,7 +42,7 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 Text="+"
-                Command="{Binding AddShopListItemComma}"/>
+                Command="{Binding AddShopListItemCommand}"/>
             <Button
                 Grid.Row="1"
                 Grid.Column="3"
@@ -69,17 +69,16 @@
                             Grid.Column="0"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"
-                            IsChecked="{Binding Comprado}"
                             />
                         <Label
                             Grid.Column="1"
                             VerticalOptions="Center"
-                            Text="{Binding Nombre}"
+                            Text="Nombre"
                             />
                         <Label
                             Grid.Column="2"
                             VerticalOptions="Center"
-                            Text="{Binding Cantidad}"
+                            Text="Cantidad"
                             />
 
                     </Grid>

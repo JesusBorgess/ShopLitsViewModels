@@ -2,10 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using ShopList.Gui.Models;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Windows.Input;
-
 namespace ShopList.Gui.ViewModels
 {
     public partial class ShopListViewModel : ObservableObject
@@ -16,16 +12,24 @@ namespace ShopList.Gui.ViewModels
 
         [ObservableProperty]
         private int _cantidad = 1;
-
+        [ObservableProperty]
+        private ShopListItem? _elementoSeleccionado = null;
 
 
         public ObservableCollection<ShopListItem> ShopList { get; }
-
 
         public ShopListViewModel()
         {
             ShopList = new ObservableCollection<ShopListItem>();
             CargarDatos();
+            if (ShopList.Count > 0)
+            {
+                ElementoSeleccionado = ShopList[0];
+            }
+            else
+            {
+                ElementoSeleccionado = null;
+            }
         }
 
 
@@ -47,13 +51,41 @@ namespace ShopList.Gui.ViewModels
             };
 
             ShopList.Add(item);
-
+            ElementoSeleccionado = item;
             NombreDelArticulo = string.Empty;
             Cantidad = 1;
         }
-
-
-
+        [RelayCommand]
+        public void RemoveShopListItem()
+        {
+            if (ElementoSeleccionado == null)
+            {
+                return;
+            }
+            ShopListItem nuevoElementoSeleccionado;
+            int indice = ShopList.IndexOf(ElementoSeleccionado);
+            if (ShopList.Count >1)
+            {
+                if (indice == ShopList.Count -1)
+                {
+                    // Es el ultimo elemento
+                    nuevoElementoSeleccionado 
+                        = ShopList[indice -1];
+                }
+                else
+                {
+                    //No es el ultimo elemento
+                    nuevoElementoSeleccionado = ShopList[indice + 1];
+                }
+            }
+            else
+            {
+                // Es el unico elemento
+                nuevoElementoSeleccionado = null;
+            }
+            ShopList.Remove(ElementoSeleccionado);
+            ElementoSeleccionado = nuevoElementoSeleccionado;
+        }
         private void CargarDatos()
         {
             ShopList.Add(new ShopListItem()
